@@ -377,6 +377,8 @@ export enum EventType {
    * Event type is sent when a notification wants to start a foreground service but a foreground service is already started.
    */
   FG_ALREADY_EXIST = 8,
+
+  LOG = 99,
 }
 
 /**
@@ -454,6 +456,11 @@ export interface EventDetail {
    * @platform android API Level >= 28
    */
   blocked?: boolean;
+
+  tag?: string;
+  level?: string;
+  message?: string;
+  error?: string;
 }
 
 /**

@@ -20,6 +20,7 @@ package app.notifee.core;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -47,9 +48,14 @@ public class ForegroundService extends Service {
     intent.putExtra("notificationBundle", notificationBundle);
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-      ContextHolder.getApplicationContext().startForegroundService(intent);
+      try{
+        Logger.d(TAG, "Starting foreground service");
+          ContextHolder.getApplicationContext().startForegroundService(intent);
+        } catch (Exception exception) {
+          Logger.e(TAG, "Unable to start foreground service", exception);
+        }
     } else {
-      // TODO test this on older device
+        Logger.d(TAG, "Starting service");
       ContextHolder.getApplicationContext().startService(intent);
     }
   }
@@ -70,12 +76,56 @@ public class ForegroundService extends Service {
   }
 
   @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    Logger.d(TAG, "onConfigurationChanged");
+  }
+
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    Logger.d(TAG, "onCreate");
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    Logger.d(TAG, "onDestroy");
+
+  }
+
+  @Override
+  public void onTaskRemoved(Intent rootIntent) {
+    super.onTaskRemoved(rootIntent);
+    Logger.d(TAG, "onTaskRemoved");
+  }
+
+  @Override
+  public void onLowMemory() {
+    super.onLowMemory();
+    Logger.d(TAG, "onLowMemory");
+  }
+  @Override
+  public void onTrimMemory(int level) {
+    super.onTrimMemory(level);
+    Logger.d(TAG, "onTrimMemory: " + level);
+  }
+  @Override
+  public boolean onUnbind(Intent intent) {
+    boolean result = super.onUnbind(intent);
+    Logger.d(TAG, "onUnbind: " + result);
+    return result;
+  }
+  @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
+        Logger.d(TAG, "onStartCommand, intent: " + intent + " flags: " + flags+ " startId: "  + startId);
     // Check if action is to stop the foreground service
     if (intent == null || STOP_FOREGROUND_SERVICE_ACTION.equals(intent.getAction())) {
+      Logger.d(TAG, "stopping self and returning");
       stopSelf();
       mCurrentNotificationId = null;
-      return 0;
+      return START_STICKY_COMPATIBILITY;
     }
 
     Bundle extras = intent.getExtras();
@@ -91,6 +141,7 @@ public class ForegroundService extends Service {
 
         if (mCurrentNotificationId == null) {
           mCurrentNotificationId = notificationModel.getId();
+          Logger.d(TAG, "calling startForeground");
           startForeground(hashCode, notification);
 
           // On headless task complete
@@ -105,15 +156,21 @@ public class ForegroundService extends Service {
 
           EventBus.post(foregroundServiceEvent);
         } else if (mCurrentNotificationId.equals(notificationModel.getId())) {
+          Logger.d(TAG, "calling notify");
           NotificationManagerCompat.from(ContextHolder.getApplicationContext())
               .notify(hashCode, notification);
         } else {
           EventBus.post(
             new NotificationEvent(NotificationEvent.TYPE_FG_ALREADY_EXIST, notificationModel));
         }
+      } else {
+        Logger.d(TAG, "notification or bundle is null");
       }
+    } else {
+      Logger.d(TAG, "extras is null");
     }
 
+    Logger.d(TAG, "returning START_NOT_STICKY");
     return START_NOT_STICKY;
   }
 
