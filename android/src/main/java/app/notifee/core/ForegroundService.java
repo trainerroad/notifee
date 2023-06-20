@@ -46,12 +46,8 @@ public class ForegroundService extends Service {
     intent.putExtra("notification", notification);
     intent.putExtra("notificationBundle", notificationBundle);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-      ContextHolder.getApplicationContext().startForegroundService(intent);
-    } else {
-      // TODO test this on older device
-      ContextHolder.getApplicationContext().startService(intent);
-    }
+    // TODO test this on older device
+    ContextHolder.getApplicationContext().startService(intent);
   }
 
   static void stop() {
