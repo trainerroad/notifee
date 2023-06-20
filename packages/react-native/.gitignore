@@ -551,12 +551,13 @@ Pods/*
 
 
 # generated files
-src/version.ts
-dist
-android/libs/notifee_core_debug.aar
-package-lock.json
-yarn.lock
-ios/NotifeeCore
+# Do not ignore the following files so that they can be accessed through GitHub repo
+# src/version.ts
+# dist
+# android/libs/notifee_core_debug.aar
+# package-lock.json
+# yarn.lock
+# ios/NotifeeCore
 
 # Generated directory when running refresh-example.sh
 TEMP
