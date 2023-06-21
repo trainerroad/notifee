@@ -86,7 +86,7 @@ public class NotifeeEventSubscriber implements EventListener {
 
     eventMap.putMap(KEY_DETAIL, eventDetailMap);
     // TODO
-    NotifeeReactUtils.sendEvent(eventMap);
+    NotifeeReactUtils.sendEvent(NOTIFICATION_EVENT_KEY, eventMap);
   }
 
   @Override
