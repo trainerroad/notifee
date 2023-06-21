@@ -141,7 +141,8 @@ export interface TriggerNotification {
  * View the [Events](/react-native/docs/events) documentation to learn more about foreground and
  * background events.
  */
-export interface Event {
+export declare type Event = OldEvent | LogEvent;
+interface OldEvent {
     /**
      * The type of notification event.
      */
@@ -150,6 +151,16 @@ export interface Event {
      * An object containing event detail.
      */
     detail: EventDetail;
+}
+interface LogEvent {
+    type: EventType.LOG;
+    detail: LogEventDetail;
+}
+interface LogEventDetail {
+    tag: string;
+    level: string;
+    message: string;
+    error?: string;
 }
 /**
  * A representation of a Foreground Service task registered via [`registerForegroundService`](/react-native/reference/registerforegroundservice).
@@ -331,7 +342,8 @@ export declare enum EventType {
      *
      * Event type is sent when a notification wants to start a foreground service but a foreground service is already started.
      */
-    FG_ALREADY_EXIST = 8
+    FG_ALREADY_EXIST = 8,
+    LOG = 99
 }
 /**
  * An interface representing the different detail values which can be provided with a notification event.
@@ -455,3 +467,4 @@ export interface NotificationSettings {
      */
     web: WebNotificationSettings;
 }
+export {};

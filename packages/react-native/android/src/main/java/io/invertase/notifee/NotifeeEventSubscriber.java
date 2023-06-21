@@ -20,6 +20,7 @@ import com.facebook.react.bridge.WritableMap;
 @Keep
 public class NotifeeEventSubscriber implements EventListener {
   static final String NOTIFICATION_EVENT_KEY = "app.notifee.notification-event";
+  static final String LOG_EVENT_KEY = "app.notifee.log-event";
   static final String FOREGROUND_NOTIFICATION_TASK_KEY =
       "app.notifee.foreground-service-headless-task";
 
@@ -31,6 +32,11 @@ public class NotifeeEventSubscriber implements EventListener {
 
   private static final String KEY_DETAIL_PRESS_ACTION = "pressAction";
   private static final String KEY_DETAIL_INPUT = "input";
+
+  private static final String KEY_LOG_TAG = "tag";
+  private static final String KEY_LOG_LEVEL = "level";
+  private static final String KEY_LOG_MESSAGE = "message";
+  private static final String KEY_LOG_ERROR = "error";
 
   @Override
   public void onNotificationEvent(NotificationEvent notificationEvent) {
@@ -67,7 +73,20 @@ public class NotifeeEventSubscriber implements EventListener {
 
   @Override
   public void onLogEvent(LogEvent logEvent) {
+    WritableMap eventMap = Arguments.createMap();
+    WritableMap eventDetailMap = Arguments.createMap();
+    eventMap.putInt(KEY_TYPE, 99); // use 99 for logs
+
+    eventDetailMap.putString(KEY_LOG_TAG, logEvent.getTag());
+    eventDetailMap.putString(KEY_LOG_LEVEL, logEvent.getLevel());
+    eventDetailMap.putString(KEY_LOG_MESSAGE, logEvent.getMessage());
+    if(logEvent.getThrowable() != null) {
+      eventDetailMap.putString(KEY_LOG_ERROR, logEvent.getThrowable().toString());
+    }
+
+    eventMap.putMap(KEY_DETAIL, eventDetailMap);
     // TODO
+    NotifeeReactUtils.sendEvent(eventMap)
   }
 
   @Override

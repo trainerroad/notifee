@@ -77,6 +77,7 @@ var EventType;
      * Event type is sent when a notification wants to start a foreground service but a foreground service is already started.
      */
     EventType[EventType["FG_ALREADY_EXIST"] = 8] = "FG_ALREADY_EXIST";
+    EventType[EventType["LOG"] = 99] = "LOG";
 })(EventType = exports.EventType || (exports.EventType = {}));
 /**
  * An enum representing the notification authorization status for this app on the device.
