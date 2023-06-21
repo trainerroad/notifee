@@ -172,7 +172,7 @@ interface OldEvent {
   /**
    * The type of notification event.
    */
-  type: EventType;
+  type: Exclude<EventType, EventType.LOG>;
 
   /**
    * An object containing event detail.
