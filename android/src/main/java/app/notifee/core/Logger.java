@@ -30,22 +30,26 @@ public class Logger {
 
   @KeepForSdk
   public static void v(@NonNull String tag, String message) {
-    Log.v(TAG, tagAndMessage(tag, message));
+    Log.v(TAG, tagAndMessage(tag, message));    
+    EventBus.post(new LogEvent(LogEvent.LEVEL_VERBOSE, tag, message));
   }
 
   @KeepForSdk
   public static void d(@NonNull String tag, String message) {
     Log.d(TAG, tagAndMessage(tag, message));
+    EventBus.post(new LogEvent(LogEvent.LEVEL_DEBUG, tag, message));
   }
 
   @KeepForSdk
   public static void i(@NonNull String tag, String message) {
     Log.i(TAG, tagAndMessage(tag, message));
+    EventBus.post(new LogEvent(LogEvent.LEVEL_INFO, tag, message));
   }
 
   @KeepForSdk
   public static void w(@NonNull String tag, String message) {
     Log.w(TAG, tagAndMessage(tag, message));
+    EventBus.post(new LogEvent(LogEvent.LEVEL_WARN, tag, message));
   }
 
   @KeepForSdk
