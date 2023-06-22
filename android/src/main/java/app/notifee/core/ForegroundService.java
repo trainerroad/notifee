@@ -156,9 +156,8 @@ public class ForegroundService extends Service {
 
           EventBus.post(foregroundServiceEvent);
         } else if (mCurrentNotificationId.equals(notificationModel.getId())) {
-          Logger.d(TAG, "calling notify");
-          NotificationManagerCompat.from(ContextHolder.getApplicationContext())
-              .notify(hashCode, notification);
+          Logger.d(TAG, "calling startForeground instead of notify");
+          startForeground(hashCode, notification);
         } else {
           EventBus.post(
             new NotificationEvent(NotificationEvent.TYPE_FG_ALREADY_EXIST, notificationModel));
