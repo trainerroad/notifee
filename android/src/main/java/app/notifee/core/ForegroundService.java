@@ -125,7 +125,7 @@ public class ForegroundService extends Service {
       Logger.d(TAG, "stopping self and returning");
       stopSelf();
       mCurrentNotificationId = null;
-      return START_STICKY_COMPATIBILITY;
+      return START_STICKY;
     }
 
     Bundle extras = intent.getExtras();
@@ -170,8 +170,8 @@ public class ForegroundService extends Service {
       Logger.d(TAG, "extras is null");
     }
 
-    Logger.d(TAG, "returning START_NOT_STICKY");
-    return START_NOT_STICKY;
+    Logger.d(TAG, "returning START_STICKY");
+    return START_STICKY;
   }
 
   @Nullable
