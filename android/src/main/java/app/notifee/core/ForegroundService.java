@@ -139,10 +139,10 @@ public class ForegroundService extends Service {
       if (notification != null & bundle != null) {
         NotificationModel notificationModel = NotificationModel.fromBundle(bundle);
 
+        Logger.d(TAG, "calling startForeground");
+        startForeground(hashCode, notification);
         if (mCurrentNotificationId == null) {
           mCurrentNotificationId = notificationModel.getId();
-          Logger.d(TAG, "calling startForeground");
-          startForeground(hashCode, notification);
 
           // On headless task complete
           final MethodCallResult<Void> methodCallResult =
@@ -154,6 +154,8 @@ public class ForegroundService extends Service {
           ForegroundServiceEvent foregroundServiceEvent =
               new ForegroundServiceEvent(notificationModel, methodCallResult);
 
+          
+          Logger.d(TAG, "sending foreground service event to execute RN function");
           EventBus.post(foregroundServiceEvent);
         } else if (mCurrentNotificationId.equals(notificationModel.getId())) {
           Logger.d(TAG, "calling notify");
