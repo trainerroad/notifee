@@ -20,6 +20,7 @@ package app.notifee.core;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -75,11 +76,47 @@ public class ForegroundService extends Service {
   }
 
   @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    Logger.d(TAG, "onConfigurationChanged");
+  }
+
+
+  @Override
   public void onCreate() {
     super.onCreate();
+    Logger.d(TAG, "onCreate");
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    Logger.d(TAG, "onDestroy");
 
   }
 
+  @Override
+  public void onTaskRemoved(Intent rootIntent) {
+    super.onTaskRemoved(rootIntent);
+    Logger.d(TAG, "onTaskRemoved");
+  }
+
+  @Override
+  public void onLowMemory() {
+    super.onLowMemory();
+    Logger.d(TAG, "onLowMemory");
+  }
+  @Override
+  public void onTrimMemory(int level) {
+    super.onTrimMemory(level);
+    Logger.d(TAG, "onTrimMemory: " + level);
+  }
+  @Override
+  public boolean onUnbind(Intent intent) {
+    boolean result = super.onUnbind(intent);
+    Logger.d(TAG, "onUnbind: " + result);
+    return result;
+  }
   @Override
   public int onStartCommand(Intent intent, int flags, int startId) {
         Logger.d(TAG, "onStartCommand, intent: " + intent + " flags: " + flags+ " startId: "  + startId);
@@ -88,7 +125,7 @@ public class ForegroundService extends Service {
       Logger.d(TAG, "stopping self and returning");
       stopSelf();
       mCurrentNotificationId = null;
-      return Service.START_STICKY_COMPATIBILITY;
+      return START_STICKY_COMPATIBILITY;
     }
 
     Bundle extras = intent.getExtras();
