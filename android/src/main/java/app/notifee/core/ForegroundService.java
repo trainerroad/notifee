@@ -128,6 +128,8 @@ public class ForegroundService extends Service {
                 mCurrentForegroundServiceType = foregroundServiceType;
                 shouldPostNotificationAgain = false;
               }
+            } else {
+              startForeground(hashCode, notification);
             }
             if (shouldPostNotificationAgain) {
               NotificationManagerCompat.from(ContextHolder.getApplicationContext())
