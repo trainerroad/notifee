@@ -33,7 +33,7 @@ the users of your application full control of how notifications are handled:
 The following example shows how to trigger a permission dialog:
 
 ```js
-import notifee, { AuthorizationStatus } from '@notifee/react-native';
+import notifee, { AuthorizationStatus } from '@trainerroad/notifee';
 
 async function requestUserPermission() {
   const settings = await notifee.requestPermission();
@@ -86,7 +86,7 @@ The settings contain information such as whether the user has specific settings 
 permission is enabled/disabled for the entire application, for example:
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 async function checkApplicationPermission() {
   const settings = await notifee.requestPermission();

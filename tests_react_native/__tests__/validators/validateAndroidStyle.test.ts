@@ -5,7 +5,7 @@ import {
   validateAndroidMessagingStyle,
   validateAndroidMessagingStyleMessage,
   validateAndroidPerson,
-} from '@notifee/react-native/src/validators/validateAndroidStyle';
+} from '@trainerroad/notifee/src/validators/validateAndroidStyle';
 import {
   AndroidBigPictureStyle,
   AndroidBigTextStyle,
@@ -14,7 +14,7 @@ import {
   AndroidMessagingStyleMessage,
   AndroidPerson,
   AndroidStyle,
-} from '@notifee/react-native/src/types/NotificationAndroid';
+} from '@trainerroad/notifee/src/types/NotificationAndroid';
 
 const testText = 'test-text';
 const testTitle = 'test-title';

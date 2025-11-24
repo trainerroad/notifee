@@ -1,5 +1,5 @@
-import validateNotification from '@notifee/react-native/src/validators/validateNotification';
-import { Notification } from '@notifee/react-native/src/types/Notification';
+import validateNotification from '@trainerroad/notifee/src/validators/validateNotification';
+import { Notification } from '@trainerroad/notifee/src/types/Notification';
 import { setPlatform } from '../testSetup';
 
 describe('Validate Notification', () => {

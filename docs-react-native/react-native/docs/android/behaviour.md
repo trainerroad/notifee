@@ -61,18 +61,18 @@ To use a device sound, you will need the file location of where it is stored. It
 
 ```js
 import NotificationSounds from 'react-native-notification-sounds';
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 // Retrieve a list of system notification sounds
 const soundsList = await NotificationSounds.getNotifications('notification');
 
 await notifee.createChannel({
-       id: "custom-sound",
-       name: "System Sound",
-       // Set sound to Aldebaran
-       // (url: "content://media/internal/audio/media/30")
-       sound: soundsList[0].url,
-  });
+  id: 'custom-sound',
+  name: 'System Sound',
+  // Set sound to Aldebaran
+  // (url: "content://media/internal/audio/media/30")
+  sound: soundsList[0].url,
+});
 ```
 
 # Auto Cancelling
@@ -130,7 +130,7 @@ For devices on lower API versions the `lights` property accepts an array, with t
 schema. For example, "red" light which shows for 300ms and stays off for 600ms:
 
 ```js
-import notifee, { AndroidColor } from '@notifee/react-native';
+import notifee, { AndroidColor } from '@trainerroad/notifee';
 // Android >= 8.0 (API level 26)
 notifee.createChannel({
   id: 'custom-lights',
@@ -192,6 +192,7 @@ notifee.displayNotification({
 ```
 
 and, by adding `showWhenLocked` and `turnScreenOn` to your activity:
+
 ```xml
   <activity
     ...
@@ -204,7 +205,7 @@ Running this code, Notifee will attempt to launch the activity when the notifica
 
 > Please note that the notification may be shown as a heads-up notification, instead of a full-screen notification, while the user is using the device.
 
-Full-screen actions have the same properties as press actions, with the same `Advanced` concepts of specifying a Custom Component or an Android Custom Activity: 
+Full-screen actions have the same properties as press actions, with the same `Advanced` concepts of specifying a Custom Component or an Android Custom Activity:
 
 ```js
 notifee.displayNotification({
@@ -220,7 +221,7 @@ notifee.displayNotification({
       launchActivity: 'com.awesome.app.FullScreenActivity',
     },
   },
-})
+});
 ```
 
 To learn more about these concepts, view the [Press Action](/react-native/docs/android/interaction#press-action) documentation.

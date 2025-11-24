@@ -21,8 +21,7 @@ The code for the example video:
 notifee.displayNotification({
   title: '<p style="color: #4caf50;"><b>Styled HTMLTitle</span></p></b></p> &#128576;',
   subtitle: '&#129395;',
-  body:
-    'The <p style="text-decoration: line-through">body can</p> also be <p style="color: #ffffff; background-color: #9c27b0"><i>styled too</i></p> &#127881;!',
+  body: 'The <p style="text-decoration: line-through">body can</p> also be <p style="color: #ffffff; background-color: #9c27b0"><i>styled too</i></p> &#127881;!',
   android: {
     channelId,
     color: '#4caf50',
@@ -116,7 +115,7 @@ notifee.displayNotification({
 
     // Android resource (mipmap or drawable)
     largeIcon: 'large_icon',
-    
+
     // Base 64 image
     largeIcon: `data:${image.mime};base64,${image.rawBase64Data}`
   },
@@ -164,7 +163,7 @@ accepts one of three types:
 The default type used is "Large". To use a different type:
 
 ```js
-import notifee, { AndroidBadgeIconType } from '@notifee/react-native';
+import notifee, { AndroidBadgeIconType } from '@trainerroad/notifee';
 
 notifee.displayNotification({
   body: 'Notification using small icon in badged mode',
@@ -225,7 +224,7 @@ On devices with [channel](/react-native/docs/android/channels) support, the impo
 without channel support, the importance can be set directly on the notification:
 
 ```js
-import notifee, { AndroidImportance } from '@notifee/react-native';
+import notifee, { AndroidImportance } from '@trainerroad/notifee';
 
 const channelId = await notifee.createChannel({
   id: 'important',
@@ -266,7 +265,7 @@ On devices with [channel](/react-native/docs/android/channels) support, the visi
 without channel support, the visibility can be set directly on the notification:
 
 ```js
-import notifee, { AndroidVisibility } from '@notifee/react-native';
+import notifee, { AndroidVisibility } from '@trainerroad/notifee';
 
 const channelId = await notifee.createChannel({
   id: 'secret',
@@ -307,7 +306,7 @@ The device uses the color to change various parts of the notification:
 You can use system colors, or a custom hexadecimal color, for example:
 
 ```js
-import notifee, { AndroidColor } from '@notifee/react-native';
+import notifee, { AndroidColor } from '@trainerroad/notifee';
 
 notifee.displayNotification({
   android: {

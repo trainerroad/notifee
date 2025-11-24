@@ -32,9 +32,9 @@ Let's create our foreground service which we'll later hook into. The callback we
 a notification object when called.
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
-notifee.registerForegroundService((notification) => {
+notifee.registerForegroundService(notification => {
   return new Promise(() => {
     // Long running task...
   });
@@ -50,7 +50,7 @@ To attach a new notification to the service, the `asForegroundService` property 
 `true`:
 
 ```js
-import notifee, { AndroidColor } from '@notifee/react-native';
+import notifee, { AndroidColor } from '@trainerroad/notifee';
 
 notifee.displayNotification({
   title: 'Foreground service',
@@ -82,9 +82,9 @@ For example, we could build a task which subscribes to an event handler:
 notifee.registerForegroundService(() => {
   return new Promise(() => {
     // Example task subscriber
-    onTaskUpdate(async (task) => {
+    onTaskUpdate(async task => {
       if (task.complete) {
-          await notifee.stopForegroundService()
+        await notifee.stopForegroundService();
       }
     });
   });
@@ -100,10 +100,10 @@ Foreground notifications behave like any other notification, and can display any
 Whilst our service is running, we can also update the current notification to display different content:
 
 ```js
-notifee.registerForegroundService((notification) => {
+notifee.registerForegroundService(notification => {
   return new Promise(() => {
     // Example task subscriber
-    onTaskUpdate(async (task) => {
+    onTaskUpdate(async task => {
       if (task.update) {
         notifee.displayNotification({
           id: notification.id,
@@ -119,7 +119,7 @@ notifee.registerForegroundService((notification) => {
       }
 
       if (task.complete) {
-        await notifee.stopForegroundService()
+        await notifee.stopForegroundService();
       }
     });
   });
@@ -139,14 +139,14 @@ For example, to stop the foreground service when a user presses an action, we ca
 task:
 
 ```js
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 
 // Create the task runner
-notifee.registerForegroundService((notification) => {
+notifee.registerForegroundService(notification => {
   return new Promise(() => {
     notifee.onForegroundEvent(async ({ type, detail }) => {
       if (type === EventType.ACTION_PRESS && detail.pressAction.id === 'stop') {
-        await notifee.stopForegroundService()
+        await notifee.stopForegroundService();
       }
     });
   });

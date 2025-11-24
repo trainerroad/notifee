@@ -44,7 +44,7 @@ the same function when called so we don't have to worry about the application's 
 ```js
 import messaging from '@react-native-firebase/messaging';
 
-// Note that an async function or a function that returns a Promise 
+// Note that an async function or a function that returns a Promise
 // is required for both subscribers.
 async function onMessageReceived(message) {
   // Do something
@@ -177,7 +177,7 @@ await admin.messaging().sendMulticast({
 
 ```js
 // React Native
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 import messaging from '@react-native-firebase/messaging';
 
 function onMessageReceived(message) {
@@ -205,7 +205,7 @@ await admin.messaging().sendMulticast({
 
 ```js
 // React Native
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 import messaging from '@react-native-firebase/messaging';
 
 function onMessageReceived(message) {

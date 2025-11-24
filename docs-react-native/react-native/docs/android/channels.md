@@ -54,7 +54,7 @@ To create a new channel, call the `createChannel` method. The only required fiel
 channel will be created with sensible defaults, for example:
 
 ```js
-import notifee, { AndroidImportance } from '@notifee/react-native';
+import notifee, { AndroidImportance } from '@trainerroad/notifee';
 
 await notifee.createChannel({
   id: 'alarm',
@@ -138,7 +138,7 @@ Each event type contains a payload with information specific to that event, such
 unblocked and the channel data itself. For example:
 
 ```js
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 
 notifee.onForegroundEvent(({ type, detail }) => {
   if (type === EventType.APP_BLOCKED) {

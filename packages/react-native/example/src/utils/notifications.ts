@@ -4,7 +4,7 @@ import {
   AndroidStyle,
   AndroidVisibility,
   Notification,
-} from '@notifee/react-native';
+} from '@trainerroad/notifee';
 
 type NotificationItems = {
   basic: Notification;

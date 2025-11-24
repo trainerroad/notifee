@@ -31,7 +31,7 @@ To handle foreground events, the [`useEffect`](https://reactjs.org/docs/hooks-ef
 
 ```jsx
 import { useEffect } from 'react';
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 
 function App() {
   // Subscribe to events
@@ -93,7 +93,7 @@ method should be registered as early on in your project as possible (e.g. the `i
 ```js
 // index.js
 import { AppRegistry } from 'react-native';
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 import App from './App';
 
 notifee.onBackgroundEvent(async ({ type, detail }) => {
@@ -137,7 +137,7 @@ For example, setup a "bootstrap" function inside of the root component of your a
 
 ```jsx
 import React, { useState, useEffect } from 'react';
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 function App() {
   const [loading, setLoading] = useState(true);

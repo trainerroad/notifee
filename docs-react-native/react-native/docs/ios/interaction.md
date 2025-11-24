@@ -14,7 +14,7 @@ When a notification is displayed on the device, if the user presses it iOS will 
 hook into this [event](/react-native/docs/events) if required:
 
 ```js
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 
 notifee.onBackgroundEvent(async ({ type, detail }) => {
   if (type === EventType.PRESS) {
@@ -62,7 +62,7 @@ contains the `id` within the `pressAction` property. For example, if the applica
 presses a `mark-as-read` action, we can access it by listening to the `ACTION_PRESS` event:
 
 ```js
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 
 notifee.onBackgroundEvent(async ({ type, detail }) => {
   if (type === EventType.ACTION_PRESS && detail.pressAction.id === 'mark-as-read') {
@@ -188,7 +188,7 @@ Once the "Send" button is pressed, the `ACTION_PRESS` event triggers, sending th
 `input` property:
 
 ```js
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 
 notifee.onBackgroundEvent(async ({ type, detail }) => {
   const { notification, pressAction, input } = detail;

@@ -10,7 +10,7 @@ previous: /react-native/docs/release-notes
 Once [installed](/react-native/docs/installation), Notifee can be imported into your React Native project:
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 ```
 
 The default export can then be used to interact with Notifee API, either inside of your React components or standalone
@@ -20,7 +20,7 @@ The library also exports the API types, documented within the [Reference API](/r
 import the [`AndroidColor`](/react-native/reference/androidcolor) type:
 
 ```js
-import { AndroidColor } from '@notifee/react-native';
+import { AndroidColor } from '@trainerroad/notifee';
 ```
 
 # TypeScript

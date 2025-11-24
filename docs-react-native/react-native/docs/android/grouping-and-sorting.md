@@ -56,7 +56,7 @@ alert when the summary notification is displayed, pass `AndroidGroupAlertBehavio
 property:
 
 ```js
-import notifee, { AndroidGroupAlertBehavior } from '@notifee/react-native';
+import notifee, { AndroidGroupAlertBehavior } from '@trainerroad/notifee';
 
 // Create summary
 notifee.displayNotification({

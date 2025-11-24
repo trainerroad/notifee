@@ -15,7 +15,7 @@ Import the library and display a basic view with a [Button](https://facebook.git
 ```js
 import React from 'react';
 import { View, Button } from 'react-native';
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 function Screen() {
   return (
@@ -32,7 +32,7 @@ Now the button is in place, create a function to handle the button press and dis
 function Screen() {
   async function onDisplayNotification() {
     // Request permissions (required for iOS)
-    await notifee.requestPermission()
+    await notifee.requestPermission();
 
     // Create a channel (required for Android)
     const channelId = await notifee.createChannel({
@@ -142,7 +142,7 @@ async function cancel(notificationId) {
 It is also possible to cancel a notification with a tag:
 
 ```js
-  await notifee.cancelNotification(notificationId, tag);
+await notifee.cancelNotification(notificationId, tag);
 ```
 
-Please note that on Android, a cancelled notification *may* briefly show up in future calls to `getDisplayedNotifications`. This appears to be a limitation of the platform in that cancel seems to be asynchronous but return immediately. See [the related issue](https://github.com/invertase/notifee/issues/188) for more information.
+Please note that on Android, a cancelled notification _may_ briefly show up in future calls to `getDisplayedNotifications`. This appears to be a limitation of the platform in that cancel seems to be asynchronous but return immediately. See [the related issue](https://github.com/invertase/notifee/issues/188) for more information.

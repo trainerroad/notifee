@@ -482,7 +482,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "RNNotifee (from `../node_modules/@notifee/react-native`)"
+  - "RNNotifee (from `../node_modules/@trainerroad/notifee`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -571,7 +571,7 @@ EXTERNAL SOURCES:
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
   RNNotifee:
-    :path: "../node_modules/@notifee/react-native"
+    :path: "../node_modules/@trainerroad/notifee"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 

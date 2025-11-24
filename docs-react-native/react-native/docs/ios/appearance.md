@@ -19,7 +19,7 @@ Only a single media file can be shown on the notification, if you provide many t
 To add attachments, provide an `attachments` array to the `ios` object:
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 notifee.displayNotification({
   title: 'Media uploaded',
@@ -60,7 +60,7 @@ By default, Notifee will show iOS notifications in heads-up mode if your app is 
 This behaviour can be customised using the [`IOSForegroundPresentationOptions`](/react-native/reference/iosforegroundpresentationoptions) options:
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 await notifee.displayNotification({
   title: 'Your account requires attention',

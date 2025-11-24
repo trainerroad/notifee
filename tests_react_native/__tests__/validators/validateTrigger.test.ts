@@ -1,4 +1,4 @@
-import validateTrigger from '@notifee/react-native/src/validators/validateTrigger';
+import validateTrigger from '@trainerroad/notifee/src/validators/validateTrigger';
 import {
   Trigger,
   TimestampTrigger,
@@ -6,7 +6,7 @@ import {
   IntervalTrigger,
   TimeUnit,
   AlarmType,
-} from '@notifee/react-native/src/types/Trigger';
+} from '@trainerroad/notifee/src/types/Trigger';
 
 describe('Validate Trigger', () => {
   describe('validateTrigger()', () => {

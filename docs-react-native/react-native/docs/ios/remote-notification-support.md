@@ -1,13 +1,14 @@
 ---
 title: Remote Notification support
-description:  Utilise the power of Notifee with remote notifications.
+description: Utilise the power of Notifee with remote notifications.
 next: /
 previous: /react-native/docs/ios/permissions
 ---
 
 It's possible to display a notification with Notifee features from outside the app using remote notifications (a.k.a push notifications) in two ways:
- - using APNs keys
- - using `notifee_options` with our notification service extension helper
+
+- using APNs keys
+- using `notifee_options` with our notification service extension helper
 
 It is recommended to only use a notification service extension if you require an image or need to modify the contents of the notification before its displayed.
 
@@ -43,29 +44,30 @@ To get started, you will need to implement a [Notification Service Extension](ht
 
 ## Add the notification service extension
 
-* From Xcode top menu go to: File > New > Target...
-* A modal will present a list of possible targets, scroll down or use the filter to select Notification Service Extension. Press Next.
-* Add a product name (use `NotifeeNotificationService` to follow along) and click Finish
-* Make sure that the **deployment target** of your newly added extension (e.g. `NotifeeNotificationService`) matches the **deployment target** of your app. You can check it by selecting you app's target -> `Build Settings` -> `Deployment`
+- From Xcode top menu go to: File > New > Target...
+- A modal will present a list of possible targets, scroll down or use the filter to select Notification Service Extension. Press Next.
+- Add a product name (use `NotifeeNotificationService` to follow along) and click Finish
+- Make sure that the **deployment target** of your newly added extension (e.g. `NotifeeNotificationService`) matches the **deployment target** of your app. You can check it by selecting you app's target -> `Build Settings` -> `Deployment`
 
 <!-- <Vimeo id="remote-notification-support-1" caption="Step 1 - Add Your Notification Service Extension" /> -->
 
 ## Add target to the Podfile
 
 Ensure that your new extension has access to `NotifeeExtensionHelper` by adding it in the Podfile:
-* From the Navigator open the Podfile: Pods > Podfile
-* Scroll down to the bottom of the file and add
+
+- From the Navigator open the Podfile: Pods > Podfile
+- Scroll down to the bottom of the file and add
 
 ```ruby
 $NotifeeExtension = true
 
 target 'NotifeeNotificationService' do
-  pod 'RNNotifeeCore', :path => '../node_modules/@notifee/react-native/RNNotifeeCore.podspec'
+  pod 'RNNotifeeCore', :path => '../node_modules/@trainerroad/notifee/RNNotifeeCore.podspec'
 end
 
 ```
 
-* Install or update your pods using pod install from the ios folder
+- Install or update your pods using pod install from the ios folder
 
 `pod install --repo-update`
 
@@ -75,29 +77,33 @@ end
 
 At this point everything should still be running normally. This is the final step which is invoking the extension helper.
 
-* From the navigator select your extension
-* Open the NotificationService.m file
-* At the top of the file import NotifeeExtensionHelper.h right after the NotificationService.h as shown below
+- From the navigator select your extension
+- Open the NotificationService.m file
+- At the top of the file import NotifeeExtensionHelper.h right after the NotificationService.h as shown below
+
 ```objectivec
 #import "NotificationService.h"
 + #import "NotifeeExtensionHelper.h"
 ```
 
-* then replace everything from line 25 to 28 with the extension helper
+- then replace everything from line 25 to 28 with the extension helper
+
 ```objectivec
 - // Modify the notification content here...
 - self.bestAttemptContent.title = [NSString stringWithFormat:@"%@ [modified]", self.bestAttemptContent.title];
-    
+
 - self.contentHandler(self.bestAttemptContent);
 + [NotifeeExtensionHelper populateNotificationContent:request
                                 withContent: self.bestAttemptContent
                                 withContentHandler:contentHandler];
 ```
+
 <!-- <Vimeo id="remote-notification-support-3" caption="Step 3 - Edit NotificationService.m" /> -->
 
-Before, moving to the next step, run the app and check it builds successfully – make sure you have the correct target selected. 
+Before, moving to the next step, run the app and check it builds successfully – make sure you have the correct target selected.
 
 ## Edit the payload
+
 Now everything is setup in your app, you can alter your notification payload in two ways:
 
 1. Update the message payload, sent via your backend
@@ -106,7 +112,6 @@ Now everything is setup in your app, you can alter your notification payload in 
 > Make sure that you will set `mutable-content: 1` (mutableContent if you are using firebase admin sdk) when sending notification otherwise Notification Service Extension will NOT be triggered
 
 > Make sure that you will set `content-available: 1` (contentAvailable if you are using firebase admin sdk) if you want to receive notification when your app is in foreground
-
 
 ### 1. Update the message payload, sent via your backend
 
@@ -120,7 +125,7 @@ Now everything is setup in your app, you can alter your notification payload in 
     apns: {
         payload: {
             aps: {
-                // Payloads coming from Admin SDK should specify params in camelCase. 
+                // Payloads coming from Admin SDK should specify params in camelCase.
                 // Payloads from REST API should specify in kebab-case
                 // see their respective reference documentation
                 'contentAvailable': 1, // Important, to receive `onMessage` event in the foreground when message is incoming
@@ -152,11 +157,11 @@ In your NotifeeNotificationService.m file you should have method `didReceiveNoti
 - (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * _Nonnull))contentHandler {
     self.contentHandler = contentHandler;
     self.bestAttemptContent = [request.content mutableCopy];
-  
+
     NSMutableDictionary *userInfoDict = [self.bestAttemptContent.userInfo mutableCopy];
     userInfoDict[@"notifee_options"] = [NSMutableDictionary dictionary];
     userInfoDict[@"notifee_options"][@"title"] = @"Modified Title";
-  
+
     self.bestAttemptContent.userInfo = userInfoDict;
 
     [NotifeeExtensionHelper populateNotificationContent:request
@@ -172,6 +177,7 @@ Please note, the `id` of the notification is the `request.identifier` and cannot
 ### Handling Events
 
 Currently, notifee supports the following events for remote notifications:
+
 - `PRESSED`
 - `ACTION_PRESSED`
 - `DISMISSED`
@@ -180,12 +186,12 @@ To know identify when an interaction is from a remote notification, we can check
 
 ```jsx
 import { useEffect } from 'react';
-import notifee, { EventType } from '@notifee/react-native';
+import notifee, { EventType } from '@trainerroad/notifee';
 function App() {
   // Subscribe to events
   useEffect(() => {
     return notifee.onForegroundEvent(({ type, detail }) => {
-      console.log('Remote notification info: ', detail.notification?.remote)
+      console.log('Remote notification info: ', detail.notification?.remote);
       switch (type) {
         case EventType.DISMISSED:
           console.log('User dismissed notification', detail.notification);

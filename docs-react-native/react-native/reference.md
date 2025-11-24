@@ -15,7 +15,7 @@ The reference documentation is broken down into two categories:
 All publicly available methods which can be accessed from the imported library, for example:
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 notifee.cancelAllNotifications();
 ```
@@ -29,7 +29,7 @@ includes descriptions of individual properties which may not be covered in the g
 as named exports, for example:
 
 ```js
-import { AndroidColor, EventType } from '@notifee/react-native';
+import { AndroidColor, EventType } from '@trainerroad/notifee';
 ```
 
 View the [Basic Usage](/react-native/docs/usage) documentation for more information.

@@ -1,4 +1,4 @@
-import validateAndroidNotification from '@notifee/react-native/src/validators/validateAndroidNotification';
+import validateAndroidNotification from '@trainerroad/notifee/src/validators/validateAndroidNotification';
 import {
   NotificationAndroid,
   AndroidVisibility,
@@ -9,8 +9,8 @@ import {
   AndroidCategory,
   AndroidProgress,
   AndroidImportance,
-} from '@notifee/react-native/src/types/NotificationAndroid';
-import { NotificationPressAction } from '@notifee/react-native/src/types/Notification';
+} from '@trainerroad/notifee/src/types/NotificationAndroid';
+import { NotificationPressAction } from '@trainerroad/notifee/src/types/Notification';
 
 describe('Validate Android Notification', () => {
   describe('validateAndroidNotification()', () => {

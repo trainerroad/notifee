@@ -7,7 +7,7 @@ previous: /react-native/docs/android/interaction
 
 # Understanding permissions
 
-On Android, notification permissions are granted by default. However, a user may revoke them later through various means. In addition, a user may manage or revoke permissions at any of three levels; application-wide, channel groups and channels. 
+On Android, notification permissions are granted by default. However, a user may revoke them later through various means. In addition, a user may manage or revoke permissions at any of three levels; application-wide, channel groups and channels.
 
 # Checking permissions
 
@@ -18,7 +18,7 @@ For each level, you can check whether notifications are permitted through a dire
 To check whether the user has enabled notifications for your app, call [`getNotificationSettings`](/react-native/reference/getnotificationsettings). The `authorizationStatus` attributes will returns `DENIED` if user has denied the permission, and `AUTHORIZED` if it's granted.
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 async function checkNotificationPermission() {
   const settings = await notifee.getNotificationSettings();
@@ -38,7 +38,7 @@ If you determine notifications are disabled, you may want to offer the user the 
 To check whether the user has enabled notifications for specific channels or channel groups, call either [`getChannel`](/react-native/reference/getchannel) or [`getChannelGroups`](/react-native/reference/getchannelgroups). Both of these functions will return a respective object with `blocked` attributes in it.
 
 ```js
-import notifee from '@notifee/react-native';
+import notifee from '@trainerroad/notifee';
 
 async function checkChannelPermission() {
   const channel = await notifee.getChannel();

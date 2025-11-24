@@ -19,7 +19,7 @@ and it's possible to also override any large icons.
 To implement this style, we provide the `AndroidStyle.BIGPICTURE` to the `style` object:
 
 ```js
-import notifee, { AndroidStyle } from '@notifee/react-native';
+import notifee, { AndroidStyle } from '@trainerroad/notifee';
 
 notifee.displayNotification({
   title: 'Image uploaded',
@@ -45,7 +45,7 @@ such as GMail.
 To implement this style, we provide the `AndroidStyle.BIGTEXT` to the `style` object:
 
 ```js
-import notifee, { AndroidStyle } from '@notifee/react-native';
+import notifee, { AndroidStyle } from '@trainerroad/notifee';
 
 notifee.displayNotification({
   title: 'Image uploaded',
@@ -70,7 +70,7 @@ the device will show as many lines of text as possible, and "hide" the remainder
 To implement this style, we provide the `AndroidStyle.INBOX` to the `style` object:
 
 ```js
-import notifee, { AndroidStyle } from '@notifee/react-native';
+import notifee, { AndroidStyle } from '@trainerroad/notifee';
 
 notifee.displayNotification({
   title: 'Messages list',
@@ -96,7 +96,7 @@ Message style notifications are used when you wish to display the history of an 
 To implement this style, we provide the `AndroidStyle.MESSAGING` to the `style` object:
 
 ```js
-import notifee, { AndroidStyle } from '@notifee/react-native';
+import notifee, { AndroidStyle } from '@trainerroad/notifee';
 
 notifee.displayNotification({
   title: 'Sarah Lane',
