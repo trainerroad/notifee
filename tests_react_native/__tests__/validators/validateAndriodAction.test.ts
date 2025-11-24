@@ -1,5 +1,5 @@
-import validateAndroidAction from '@notifee/react-native/src/validators/validateAndroidAction';
-import { AndroidAction } from '@notifee/react-native/src/types/NotificationAndroid';
+import validateAndroidAction from '@trainerroad/notifee/src/validators/validateAndroidAction';
+import { AndroidAction } from '@trainerroad/notifee/src/types/NotificationAndroid';
 
 describe('Validate Android Action', () => {
   describe('validateAndroidAction()', () => {

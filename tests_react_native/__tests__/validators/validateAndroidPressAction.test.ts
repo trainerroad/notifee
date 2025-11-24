@@ -1,5 +1,5 @@
-import validateAndroidPressAction from '@notifee/react-native/src/validators/validateAndroidPressAction';
-import { NotificationPressAction } from '@notifee/react-native/src/types/Notification';
+import validateAndroidPressAction from '@trainerroad/notifee/src/validators/validateAndroidPressAction';
+import { NotificationPressAction } from '@trainerroad/notifee/src/types/Notification';
 
 describe('Validate Android Press Action', () => {
   describe('validateAndroidPressAction()', () => {

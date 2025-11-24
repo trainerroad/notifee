@@ -1,5 +1,5 @@
 {
-  "name": "@notifee/react-native",
+  "name": "@trainerroad/notifee",
   "version": "9.1.8",
   "author": "Invertase <oss@invertase.io> (http://invertase.io)",
   "description": "Notifee - a feature rich notifications library for React Native.",

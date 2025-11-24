@@ -1,9 +1,9 @@
-import validateAndroidChannel from '@notifee/react-native/src/validators/validateAndroidChannel';
+import validateAndroidChannel from '@trainerroad/notifee/src/validators/validateAndroidChannel';
 import {
   AndroidChannel,
   AndroidVisibility,
-} from '@notifee/react-native/src/types/NotificationAndroid';
-import { AndroidImportance } from '@notifee/react-native/src/types/NotificationAndroid';
+} from '@trainerroad/notifee/src/types/NotificationAndroid';
+import { AndroidImportance } from '@trainerroad/notifee/src/types/NotificationAndroid';
 
 describe('Validate Android Channel', () => {
   describe('validateAndroidChannel()', () => {

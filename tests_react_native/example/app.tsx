@@ -28,7 +28,7 @@ import Notifee, {
   TriggerType,
   // TimestampTrigger,
   // RepeatFrequency,
-} from '@notifee/react-native';
+} from '@trainerroad/notifee';
 
 import { notifications } from './notifications';
 import { FirebaseMessagingTypes } from '@react-native-firebase/messaging';

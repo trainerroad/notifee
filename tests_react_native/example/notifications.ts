@@ -6,7 +6,7 @@ import {
   AndroidImportance,
   AndroidFlags,
   AndroidColor,
-} from '@notifee/react-native';
+} from '@trainerroad/notifee';
 
 export const notifications: { key: string; notification: Notification | Notification[] }[] = [
   {
