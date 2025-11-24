@@ -123,11 +123,9 @@ public class ForegroundService extends Service {
             // find if we need to start the service again if the type was changed
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
               int foregroundServiceType = notificationModel.getAndroid().getForegroundServiceType();
-              if (foregroundServiceType != mCurrentForegroundServiceType) {
-                startForeground(hashCode, notification, foregroundServiceType);
-                mCurrentForegroundServiceType = foregroundServiceType;
-                shouldPostNotificationAgain = false;
-              }
+              startForeground(hashCode, notification, foregroundServiceType);
+              mCurrentForegroundServiceType = foregroundServiceType;
+              shouldPostNotificationAgain = false;
             } else {
               startForeground(hashCode, notification);
             }
