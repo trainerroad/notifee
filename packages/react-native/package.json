@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/invertase/notifee.git"
+    "url": "git+https://github.com/trainerroad/notifee.git"
   },
   "license": "Apache-2.0",
   "keywords": [
@@ -52,8 +52,8 @@
     "onesignal"
   ],
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "always-auth": true,
+    "registry": "https://pkgs.dev.azure.com/trainerroad/Packages/_packaging/PrivateNpm/npm/registry/"
   },
   "files": [
     "README.md",
